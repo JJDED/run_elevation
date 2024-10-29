@@ -36,4 +36,3 @@ print(energy_df)
 
 energy_df.to_csv(f'energi_{year}.csv')
 energy_df.to_json(f'energi_{year}.json')
-
