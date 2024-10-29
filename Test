@@ -1,0 +1,22 @@
+import requests 
+import pandas as pd
+
+response = requests.get(
+    url='https://api.energidataservice.dk/dataset/ElectricityProdex5MinRealtime?offset=0&sort=Minutes5UTC%20DESC')
+
+result = response.json()
+
+for k, v in result.items():
+    print(k, v)
+
+records = result.get('records', [])
+
+print(records)
+
+print(len(records))
+
+energy_df = pd.DataFrame(records)
+print(energy_df)
+
+energy_df.to_csv('energy_2024.csv')
+energy_df.to_json('energy_2024.json')
